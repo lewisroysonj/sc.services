@@ -1,0 +1,10 @@
+FROM node:18-alpine
+
+WORKDIR /service
+
+COPY package.json /service/package.json
+COPY yarn.lock /service/yarn.lock
+
+COPY . /service
+
+CMD ["tail", "-f", "/dev/null"]
