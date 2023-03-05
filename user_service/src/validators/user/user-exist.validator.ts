@@ -10,12 +10,14 @@ export class IsUserAlreadyExist implements ValidatorConstraintInterface {
     ) {}
 
     async validate(email: string): Promise<boolean> {
-        console.log(this.userRepository)
+        if (!email) {
+           return true 
+        }
         const user = await this.userRepository.getByEmail(email)
-        return user === null || user === undefined
+        return !user
     }
-
+    
     defaultMessage(): string {
-        return 'The provided email <<$value>> is already registered.'
+        return 'The provided email $value is already registered.'
     }
 }

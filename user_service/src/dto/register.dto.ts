@@ -1,4 +1,6 @@
-import { IsDefined, IsEmail, IsJSON, IsNotEmpty, IsOptional, MinLength, Validate } from "class-validator"
+import { IsDefined, IsEmail, IsNotEmpty, IsOptional, MinLength, Validate } from "class-validator"
+import { Roles } from "src/interfaces/user.interface"
+import { IsValidRole } from "src/validators/user/role.validator"
 import { IsUserAlreadyExist } from "src/validators/user/user-exist.validator"
 
 export class RegisterDTO {
@@ -18,6 +20,6 @@ export class RegisterDTO {
     readonly password: string
 
     @IsOptional()
-    @IsJSON()
-    readonly roles: JSON
+    @Validate(IsValidRole)
+    readonly roles: Roles
 }

@@ -5,6 +5,7 @@ import { User } from "src/entities/user.entity";
 import { UserRepository } from "src/repositories/user/user.repository";
 import { AuthRegisterService } from "src/services/auth/register.service";
 import { UserService } from "src/services/user/user.service";
+import { IsUserAlreadyExist } from "src/validators/user/user-exist.validator";
 
 @Module({
     imports: [
@@ -13,6 +14,6 @@ import { UserService } from "src/services/user/user.service";
         ]),
     ],
     controllers: [AuthRegisterController],
-    providers: [AuthRegisterService, UserService, UserRepository]
+    providers: [AuthRegisterService, UserService, UserRepository, IsUserAlreadyExist]
 })
 export class AuthRegisterModule {}

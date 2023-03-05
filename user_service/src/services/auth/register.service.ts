@@ -10,9 +10,6 @@ export class AuthRegisterService {
     ) {}
 
     async register(register: RegisterDTO): Promise<User> {
-        const user = await this.userService.create(register)
-        delete user.password
-
-        return user
+        return await this.userService.create(register)
     }
 }

@@ -11,12 +11,11 @@ export class UserRepository {
     ) {}
 
     async getAll(): Promise<User[] | undefined> {
-        console.log(this.userRepository)
         return this.userRepository.find()
     }
 
     async getByEmail(email: string): Promise<User | undefined> {
-        return this.userRepository.findOneBy({email})
+        return this.userRepository.findOneBy({ email })
     }
 
     async create(data: Partial<User>): Promise<User> {
@@ -24,6 +23,6 @@ export class UserRepository {
             data.roles = JSON.parse(`["ROLE_USER"]`)
         }
         const user = this.userRepository.create(data)
-        return this.userRepository.save(user)
+        return await this.userRepository.save(user)
     }
 }

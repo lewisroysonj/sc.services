@@ -1,5 +1,4 @@
-import { Module, UseGuards } from "@nestjs/common";
-import { AuthGuard } from "src/guards/auth.guard";
+import { Module } from "@nestjs/common";
 import { AdminUserModule } from "./user/user.module";
 
 @Module({

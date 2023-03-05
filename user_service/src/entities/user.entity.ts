@@ -1,4 +1,4 @@
-import { IUser } from 'src/interfaces/user.interface';
+import { IUser, Roles } from 'src/interfaces/user.interface';
 import {
   Column,
   Entity,
@@ -27,7 +27,7 @@ export class User implements IUser {
   isVerified: boolean;
 
   @Column({ type: 'json' })
-  roles: JSON;
+  roles: Roles;
 
   @Column({ default: new Date() })
   @CreateDateColumn()

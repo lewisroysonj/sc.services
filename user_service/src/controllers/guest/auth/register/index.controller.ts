@@ -16,7 +16,7 @@ export class AuthRegisterController {
     @HttpCode(HttpStatus.CREATED)
     async register(@Body() register: RegisterDTO): Promise<HandleSuccessResponse<Partial<User>>> {
         return handleSuccessResponse(
-            this.authRegisterService.register(register),
+            await this.authRegisterService.register(register),
             'Registration completed successfully'
         )
     }
