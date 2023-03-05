@@ -1,9 +1,11 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { AppRouterModule } from './app-router.module';
 import { typeOrmAsyncConfig } from './config/type-orm/typeorm.config';
 import { logger } from './middlewares/logger.middleware';
-import { UserModule } from './modules/user.module';
+import { AdminModule } from './modules/admin/admin.module';
+import { GuestModule } from './modules/guest/guest.module';
 
 @Module({
   imports: [
@@ -11,7 +13,9 @@ import { UserModule } from './modules/user.module';
       isGlobal: true,
     }),
     TypeOrmModule.forRootAsync(typeOrmAsyncConfig),
-    UserModule
+    AppRouterModule,
+    AdminModule,
+    GuestModule
   ],
 })
 

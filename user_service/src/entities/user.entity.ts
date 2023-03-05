@@ -20,16 +20,16 @@ export class User implements IUser {
   @Column()
   password: string;
 
-  @Column()
+  @Column({ default: true })
   isActive: boolean;
 
-  @Column()
+  @Column({ default: false })
   isVerified: boolean;
 
   @Column({ type: 'json' })
   roles: JSON;
 
-  @Column()
+  @Column({ default: new Date() })
   @CreateDateColumn()
   createTime: number;
 }

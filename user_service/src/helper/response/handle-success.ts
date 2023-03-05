@@ -13,4 +13,10 @@ const handleSuccessResponse = (
   };
 };
 
+export type HandleSuccessResponse<T> = {
+  success: boolean,
+  message: string,
+  data: T
+}
+
 export default handleSuccessResponse;

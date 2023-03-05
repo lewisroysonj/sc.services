@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { User } from "src/entities/user.entity";
-import { UserRepository } from "src/repositories/user.repository";
+import { UserRepository } from "src/repositories/user/user.repository";
 
 @Injectable()
 export class UserService {
@@ -8,5 +8,9 @@ export class UserService {
 
     async getAll(): Promise<User[]> {
         return this.userRepository.getAll()
+    }
+
+    async create(data: Partial<User>): Promise<User> {
+        return this.userRepository.create(data)
     }
 }

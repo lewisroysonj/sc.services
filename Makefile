@@ -9,7 +9,7 @@ up: env down
 
 start:
 	docker-compose -f docker-compose.yml exec $(service) sh -c \
-    	"yarn start"
+    	"yarn start:dev"
 
 down: timeout
 	docker ps -a -q | xargs -n 1 -P 8 -I {} docker stop {}
